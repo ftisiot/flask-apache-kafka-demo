@@ -1,0 +1,21 @@
+<!doctype html>
+<title>Pizza Delivery</title>
+<style>
+  #data {
+    text-align: center;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+<h2>Pizza-Delivery 🚀</h2>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<div id="data"><table id="mytable" border="1px"><tr><td>Timestamp</td><td>Caller</td><td>Address</td></tr></table></div>
+{% for t, c, a in data: %}
+<script>
+    $("#mytable tr:first").after("<tr><td>{{ t }}</td><td>{{ c }}</td><td>{{ a }}</td></tr>")
+    
+</script>
+{% endfor %}

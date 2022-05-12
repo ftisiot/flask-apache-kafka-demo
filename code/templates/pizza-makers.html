@@ -1,0 +1,36 @@
+<!doctype html>
+<title>Pizza Makers</title>
+<style>
+  #data {
+    text-align: center;
+  }
+  table, th, td {
+    border: 1px solid #666666;
+    border-collapse: collapse;
+  }
+  td.header {
+    color: #000000;
+    background-color: #cccccc;
+  }
+</style>
+<h2>Pizza-Makers 💪</h2>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+  function pizzaIsReady(id, caller, address){
+    var request = new XMLHttpRequest();
+    
+    request.open("POST", "/pizza-ready/"+id, true);
+    request.setRequestHeader("Content-Type","application/json")
+    payload = {"caller":caller, "address":address}
+    request.send(JSON.stringify(payload));
+    document.getElementById(id).disabled = true;
+
+  }
+</script>
+<div id="data"><table id="mytable"><tr><td class="header">Timestamp</td><td class="header">Caller</td><td class="header">Pizza</td><td class="header">Address</td><td class="header">Pizza Made</td></tr></table></div>
+{% for t, c, p, a, b in data: %}
+<script>
+    $("#mytable tr:first").after("<tr><td>{{ t }}</td><td>{{ c }}</td><td>{{ p }}</td><td>{{ a }}</td><td><input id='{{ t }}' type='submit' value='Pizza Done' name='{{ b }}' onclick=\"pizzaIsReady('{{ t }}', '{{ c }}', '{{ a }}')\" /></td></tr>")
+    
+</script>
+{% endfor %}

@@ -1,0 +1,4 @@
+kafka-python
+flask
+flask_cors
+aiven-client

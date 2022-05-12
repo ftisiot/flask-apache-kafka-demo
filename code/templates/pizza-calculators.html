@@ -1,0 +1,32 @@
+<!doctype html>
+<title>Pizza Calculators</title>
+<style>
+  #data {
+    text-align: center;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+<h2>Pizza-Calculators 🧮</h2>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+  function pizzaIsReady(id, caller, address){
+    var request = new XMLHttpRequest();
+    
+    request.open("POST", "/pizza-ready/"+id, true);
+    request.setRequestHeader("Content-Type","application/json")
+    payload = {"caller":caller, "address":address}
+    request.send(JSON.stringify(payload));
+    document.getElementById(id).disabled = true;
+
+  }
+</script>
+<div id="data"><table id="mytable" border="1px"><tr><td>Timestamp</td><td>Caller</td><td>Pizza</td><td>Address</td></tr></table></div>
+{% for t, c, p, a, b in data: %}
+<script>
+    $("#mytable tr:first").after("<tr><td>{{ t }}</td><td>{{ c }}</td><td>{{ p }}</td><td>{{ a }}</td></tr>")
+    
+</script>
+{% endfor %}
