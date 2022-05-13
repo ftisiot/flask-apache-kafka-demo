@@ -26,52 +26,53 @@ Setup
 
 1. Create a virtual environment
 
-```
-python3 -m venv kafka-flask
-source kafka-flask/bin/activate
-```
+   ```
+   python3 -m venv kafka-flask
+   source kafka-flask/bin/activate
+   ```
 
 2. Install the required dependencies
 
-```
-pip install -r requirements.txt
-```
+   ```
+   pip install -r requirements.txt
+   ```
 
 3. Copy the `env.conf.example` to `env.conf` and customize the parameters for `TOKEN` and `PROJECT_NAME`
 
 4. Create Aiven for Apache Kafka (requires [jq](https://stedolan.github.io/jq/) to be installed)
 
-```
-code/start-services.sh
-```
+   ```
+   code/start-services.sh
+   ```
 
-This code will create:
-    * An Aiven for Apache Kafka service named `demo-kafka` in the project passed as parameter
-    * A local folder called `certs` containing the required SSL certificate files required for the connection
-    * An environment file `code/kafka-endpoint-conf.py` containing the Aiven for Apache Kafka service endpoints
-    * An Aiven for Opensearch service named `demo-opensearch` in the project passed as parameter
-    * An Kafka Connect configuration file `code/opensearch_sink.json` allowing to sink the `pizza-orders` data into an OpenSearch Index
+   This code will create:
+
+   * An Aiven for Apache Kafka service named `demo-kafka` in the project passed as parameter
+   * A local folder called `certs` containing the required SSL certificate files required for the connection
+   * An environment file `code/kafka-endpoint-conf.py` containing the Aiven for Apache Kafka service endpoints
+   * An Aiven for Opensearch service named `demo-opensearch` in the project passed as parameter
+   * An Kafka Connect configuration file `code/opensearch_sink.json` allowing to sink the `pizza-orders` data into an OpenSearch Index
 
 5. To start the flask app execute
 
-```
-python code/app.py
-```
+   ```
+   python code/app.py
+   ```
 
 6. Open the following windows in a browser to check the various endpoints
 
-    * `http://127.0.0.1:5000/`: to view the list of pizza options and place an order in the `pizza-orders` topic
-    * `http://127.0.0.1:5000/pizza-makers`: to view the `pizza-orders` topic data and act as a "pizzaiolo" making a pizza and sending it to delivery (`pizza-delivery` topic). The example supports up to 2 parallel `pizza-makers` sessions, if more than one is open each of the sessions will show up only data coming from a single Kafka topic partition
-    * `http://127.0.0.1:5000/pizza-calc`: to view the `pizza-orders` topic data as a billing person. This consumer is associated to a different consumer group compared to `pizza-makers` so both will receive the same order
-    * `http://127.0.0.1:5000/pizza-delivery`: to view the `pizza-delivery` topic data.
+   * `http://127.0.0.1:5000/`: to view the list of pizza options and place an order in the `pizza-orders` topic
+   * `http://127.0.0.1:5000/pizza-makers`: to view the `pizza-orders` topic data and act as a "pizzaiolo" making a pizza and sending it to delivery (`pizza-delivery` topic). The example supports up to 2 parallel `pizza-makers` sessions, if more than one is open each of the sessions will show up only data coming from a single Kafka topic partition
+   * `http://127.0.0.1:5000/pizza-calc`: to view the `pizza-orders` topic data as a billing person. This consumer is associated to a different consumer group compared to `pizza-makers` so both will receive the same order
+   * `http://127.0.0.1:5000/pizza-delivery`: to view the `pizza-delivery` topic data.
 
 7. Optionally, execute the following code to start the Kafka Connect connector to sink the `pizza-orders` topic data to Opensearch
 
 8. To delete all services run
 
-```
-code/delete-services.sh
-```
+   ```
+   code/delete-services.sh
+   ```
 
 
 License
