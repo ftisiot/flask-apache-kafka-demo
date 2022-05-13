@@ -1,5 +1,6 @@
 kafka-flask
 conf/env.conf
 code/kafkaEndpointConf.py
+code/opensearch_sink.json
 certs
 code/__pycache__
