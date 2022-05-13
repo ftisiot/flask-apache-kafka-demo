@@ -69,7 +69,7 @@ Setup
 7. Optionally, execute the following code to start the Kafka Connect connector to sink the `pizza-orders` topic data to Opensearch
 
     ```
-    avn service connector create demo-kafka @code/opensearch_sink.json
+    avn service connector create demo-flask-kafka @code/opensearch_sink.json
     ```
 
 8. To delete all services run
