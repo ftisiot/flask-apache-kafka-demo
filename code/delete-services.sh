@@ -4,9 +4,9 @@
  
 
 avn --auth-token $TOKEN                     \
-    service terminate demo-kafka --force    \
+    service terminate demo-flask-kafka --force    \
     --project $PROJECT_NAME
 
 avn --auth-token $TOKEN                          \
-    service terminate demo-opensearch --force    \
+    service terminate demo-flask-opensearch --force    \
     --project $PROJECT_NAME
