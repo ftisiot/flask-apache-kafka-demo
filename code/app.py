@@ -2,7 +2,7 @@
 
 import json
 import time
-from kafkaEndpointConf import *
+from kafkaEndpointConf import HOST, PORT
 from flask import Flask, request, render_template, Response
 from kafka import KafkaConsumer, KafkaProducer
 
@@ -19,9 +19,9 @@ CONSUMER_GROUP_CALC = "pizza-calculators"
 producer = KafkaProducer(
     bootstrap_servers=KAFKA_SERVER,
     security_protocol="SSL",
-    ssl_cafile = CERTS_FOLDER+"/ca.pem",
-    ssl_certfile = CERTS_FOLDER+"/service.cert",
-    ssl_keyfile = CERTS_FOLDER+"/service.key",
+    ssl_cafile = CERTS_FOLDER+ "/ca.pem",
+    ssl_certfile = CERTS_FOLDER+ "/service.cert",
+    ssl_keyfile = CERTS_FOLDER+ "/service.key",
     value_serializer=lambda v: json.dumps(v).encode('ascii'),
     key_serializer=lambda v: json.dumps(v).encode('ascii')
 )
@@ -53,7 +53,7 @@ def index():
     
     return render_template("index.html")
 
-### stream_template is a function allowing the streaming of results back to the source page
+###   is a function allowing the streaming of results back to the source page
 
 def stream_template(template_name, **context):
     app.update_template_context(context)

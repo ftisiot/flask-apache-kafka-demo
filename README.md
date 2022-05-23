@@ -5,7 +5,9 @@ This repo contains a demo Flask app using Apache Kafka® as backend. It provides
 * Apache Kafka producer and consumer
 * Topic partitions and parallel consumers
 * Consumer Group
-* Kafka Connect sink to Opensearch
+* Kafka Connect sink to [OpenSearch](https://developer.aiven.io/docs/products/opensearch/index.html)
+
+The default code uses [Aiven for Apache Kafka®](https://developer.aiven.io/docs/products/kafka/index.html) and [Aiven for OpenSearch](https://developer.aiven.io/docs/products/opensearch/index.html), but can work with any Apache Kafka® and OpenSearch environments by changing the `HOST` and `PORT` parameters. If you want to give a try to Aiven for Apache Kafka, you can [sign-up for our trial](https://console.aiven.io/signup?utm_source=github&utm_medium=blog&utm_campaign=flask_kafka).
 
 Overview
 ========
@@ -39,7 +41,7 @@ Setup
 
 3. Copy the `env.conf.example` to `env.conf` and customize the parameters for `TOKEN` and `PROJECT_NAME`
 
-4. Create Aiven for Apache Kafka (requires [jq](https://stedolan.github.io/jq/) to be installed)
+4. Create [Aiven for Apache Kafka]() (requires [jq](https://stedolan.github.io/jq/) to be installed)
 
    ```
    code/start-services.sh
