@@ -4,3 +4,4 @@ code/kafkaEndpointConf.py
 code/opensearch_sink.json
 certs
 code/__pycache__
+.vscode
