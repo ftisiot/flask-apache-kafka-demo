@@ -1,5 +1,6 @@
-Apache Kafka® on Flask
-======================
+Demo Project for Apache Kafka® and Flask
+========================================
+
 This repo contains a demo Flask app using Apache Kafka® as backend. It provides examples of:
 
 * Apache Kafka producer and consumer

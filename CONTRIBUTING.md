@@ -1,6 +1,6 @@
 # Welcome!
 
-Contributions are very welcome on {{ PROJECT }}. When contributing please keep this in mind:
+Contributions are very welcome on **Demo Project for Apache Kafka® and Flask**. When contributing please keep this in mind:
 
 - Open an issue to discuss new bigger features.
 - Write code consistent with the project style and make sure the tests are passing.
